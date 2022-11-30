@@ -6,44 +6,15 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
     public static int splitAndSum(String literal) {
-        // 유효성
         if(isLiteralNullOrEmpty(literal)){
             return 0;
         };
-
-        // 매쳐
         String delimeterRegEx = ",|:";
-        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(literal);
-        if (matcher.find()) {
-            delimeterRegEx = matcher.group(1);
-            literal = matcher.group(2);
+        if (isCustom(literal)) {
+            delimeterRegEx = findDelimeter(literal);
+            literal = findLiteral(literal);
         }
-        String[] splintedLiteral = literal.split(delimeterRegEx);
-
-        return caculate(splintedLiteral);
-    }
-
-    private static int caculate(String[] splintedLiteral) {
-        int sum = 0;
-        for (int i = 0; i < splintedLiteral.length; i++) {
-            int num = Integer.parseInt(splintedLiteral[i]);
-            validateNegative(num);
-            sum += num;
-       }
-        return sum;
-    }
-
-    private static void validateNegative(int num) {
-        if (num < 0) {
-            throw new RuntimeException("숫자는 양수만 가능합니다.");
-        }
-    }
-
-    private static boolean checkNegative(String literal) {
-        if (literal.contains("-")) {
-            return true;
-        }
-        return false;
+        return caculate(literal,delimeterRegEx);
     }
 
     private static boolean isLiteralNullOrEmpty(String literal) {
@@ -54,5 +25,42 @@ public class StringAddCalculator {
             return true;
         }
         return false;
+    }
+
+    private static boolean isCustom(String literal) {
+        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(literal);
+        if (matcher.find()) {
+            return true;
+        }
+        return false;
+    }
+
+    private static String findDelimeter(String literal) {
+        String regEx = "//(.)\n(.*)";
+        Matcher matcher = Pattern.compile(regEx).matcher(literal);
+        return matcher.group(1);
+    }
+
+    private static String findLiteral(String literal) {
+        String regEx = "//(.)\n(.*)";
+        Matcher matcher = Pattern.compile(regEx).matcher(literal);
+        return matcher.group(2);
+    }
+
+    private static int caculate(String literal, String delimeterRegEx) {
+        String[] splintedLiteral = literal.split(delimeterRegEx);
+        int sum = 0;
+        for (int i = 0; i < splintedLiteral.length; i++) {
+            int num = Integer.parseInt(splintedLiteral[i]);
+            validateNegative(num);
+            sum += num;
+        }
+        return sum;
+    }
+
+    private static void validateNegative(int num) {
+        if (num < 0) {
+            throw new RuntimeException("숫자는 양수만 가능합니다.");
+        }
     }
 }
