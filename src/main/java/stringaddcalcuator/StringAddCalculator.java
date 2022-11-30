@@ -7,12 +7,9 @@ public class StringAddCalculator {
 
     public static int splitAndSum(String literal) {
         // 유효성
-        if(literalNullOrEmpty(literal)){
+        if(isLiteralNullOrEmpty(literal)){
             return 0;
         };
-        if (checkNegative(literal)) {
-            throw new RuntimeException("음수 불가");
-        }
 
         // 매쳐
         String delimeterRegEx = ",|:";
@@ -23,12 +20,23 @@ public class StringAddCalculator {
         }
         String[] splintedLiteral = literal.split(delimeterRegEx);
 
-        // 계산
+        return caculate(splintedLiteral);
+    }
+
+    private static int caculate(String[] splintedLiteral) {
         int sum = 0;
         for (int i = 0; i < splintedLiteral.length; i++) {
-            sum += Integer.parseInt(splintedLiteral[i]);
-        }
+            int num = Integer.parseInt(splintedLiteral[i]);
+            validateNegative(num);
+            sum += num;
+       }
         return sum;
+    }
+
+    private static void validateNegative(int num) {
+        if (num < 0) {
+            throw new RuntimeException("숫자는 양수만 가능합니다.");
+        }
     }
 
     private static boolean checkNegative(String literal) {
@@ -38,7 +46,7 @@ public class StringAddCalculator {
         return false;
     }
 
-    private static boolean literalNullOrEmpty(String literal) {
+    private static boolean isLiteralNullOrEmpty(String literal) {
         if (literal == null) {
             return true;
         }
