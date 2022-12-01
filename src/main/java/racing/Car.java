@@ -3,12 +3,16 @@ package racing;
 import racing.utils.Validator;
 
 public class Car {
-    final String name;
-    final int distense;
+    private final String name;
+    private int distance;
 
     public Car(String name) {
         Validator.checkCarName(name);
         this.name = name;
-        this.distense = 0;
+        this.distance = 0;
+    }
+
+    public void move() {
+        this.distance++;
     }
 }
