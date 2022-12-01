@@ -1,8 +1,7 @@
 package racing;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +12,7 @@ class RacingGameTest {
     void racingConstructor() {
         String[] names = {"name1"};
         assertThatThrownBy(() -> {
-            RacingGame racingGame = new RacingGame(names);
+            RacingGame racingGame = new RacingGame(names,new RandomNumberGenerator());
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -21,7 +20,7 @@ class RacingGameTest {
     @Test
     void racingTry() {
         String[] names = {"name1", "name2"};
-        RacingGame racingGame = new RacingGame(names);
+        RacingGame racingGame = new RacingGame(names, new RandomNumberGenerator());
 
         assertThatThrownBy(() -> {
             racingGame.tryMove(0);

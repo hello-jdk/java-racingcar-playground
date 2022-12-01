@@ -6,10 +6,13 @@ import racing.utils.Validator;
 
 public class RacingGame {
     private final List<Car> cars;
+    private final RandomGenerator randomGenerator;
 
-    public RacingGame(String[] names) {
-        cars = new ArrayList<>();
+    public RacingGame(String[] names,RandomGenerator randomGenerator) {
         Validator.checkRacingGameNameSize(names);
+
+        this.randomGenerator = randomGenerator;
+        cars = new ArrayList<>();
         generateCars(names);
     }
 
@@ -21,6 +24,5 @@ public class RacingGame {
 
     public void tryMove(int tryCount) {
         Validator.checkTryMoveCount(tryCount);
-
     }
 }
