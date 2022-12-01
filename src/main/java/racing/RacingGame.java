@@ -21,5 +21,6 @@ public class RacingGame {
 
     public void tryMove(int tryCount) {
         Validator.checkTryMoveCount(tryCount);
+
     }
 }
