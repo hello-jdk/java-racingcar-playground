@@ -12,4 +12,10 @@ public class Validator {
             throw new IllegalArgumentException("자동차는 최소 2대 이상이여야합니다.");
         }
     }
+
+    public static void checkTryMoveCount(int tryCount) {
+        if (tryCount < 1) {
+            throw new IllegalArgumentException("시도할 횟수는 최소 1번 이상입니다.");
+        }
+    }
 }

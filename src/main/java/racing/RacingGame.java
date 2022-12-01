@@ -18,4 +18,8 @@ public class RacingGame {
             cars.add(new Car(name));
         }
     }
+
+    public void tryMove(int tryCount) {
+        Validator.checkTryMoveCount(tryCount);
+    }
 }

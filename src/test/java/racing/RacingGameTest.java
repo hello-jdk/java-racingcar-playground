@@ -1,5 +1,7 @@
 package racing;
 
+import static org.assertj.core.api.Assertions.*;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,8 +12,19 @@ class RacingGameTest {
     @Test
     void racingConstructor() {
         String[] names = {"name1"};
-        Assertions.assertThatThrownBy(() -> {
+        assertThatThrownBy(() -> {
             RacingGame racingGame = new RacingGame(names);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("시도할 횟수는 최소 1번 이상이다.")
+    @Test
+    void racingTry() {
+        String[] names = {"name1", "name2"};
+        RacingGame racingGame = new RacingGame(names);
+
+        assertThatThrownBy(() -> {
+            racingGame.tryMove(0);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
