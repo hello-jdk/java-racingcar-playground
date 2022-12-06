@@ -4,9 +4,9 @@ public class CarDTO {
     private final String carName;
     private int distanse;
 
-    public CarDTO(String carName) {
+    public CarDTO(String carName, int distanse) {
         this.carName = carName;
-        this.distanse = 0;
+        this.distanse = distanse;
     }
 
     public String getCarName() {
