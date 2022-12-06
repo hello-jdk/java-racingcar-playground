@@ -9,5 +9,5 @@ public class Car {
     public Car(CarDTO car) {
         Validator.checkCarName(car);
         this.car = car;
-    }ㅎ
+    }
 }
