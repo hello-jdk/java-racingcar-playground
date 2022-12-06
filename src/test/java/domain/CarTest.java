@@ -19,4 +19,10 @@ class CarTest {
             Car car3 = new Car(new CarDTO("NameName"));
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 자동차의_이동() {
+        Car car = new Car(new CarDTO("Name"));
+        car.tryMove();
+    }
 }

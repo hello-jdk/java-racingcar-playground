@@ -10,4 +10,7 @@ public class Car {
         Validator.checkCarName(car);
         this.car = car;
     }
+
+    public void tryMove() {
+    }
 }
