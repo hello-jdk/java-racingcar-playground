@@ -23,6 +23,42 @@
 - 기능 구현 전 구현할 기능 목록 정리 추가
 - 커밋 메시지 컨벤션 [Angular JS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 지키기
 
+## 예시
+
+```
+경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).
+pobi,crong,honux
+시도할 회수는 몇회인가요?
+5
+
+실행 결과
+pobi : -
+crong : -
+honux : -
+
+pobi : --
+crong : -
+honux : --
+
+pobi : ---
+crong : --
+honux : ---
+
+pobi : ----
+crong : ---
+honux : ----
+
+pobi : -----
+crong : ----
+honux : -----
+
+pobi : -----
+crong : ----
+honux : -----
+
+pobi, honux가 최종 우승했습니다.
+```
+
 ## 구현
 
 - CarDTO
@@ -43,9 +79,11 @@
 
 - RacingGame
     - 상태는 (현재유저가플레이하는여러개의)Car를 가지고 있다.
-    - [ ] 실행한다.
-        - [ ] 각 Car 마다 이동을 시도한다.
-        - [ ] 랜덤한 수 중에 4이상일때만 움직인다.
+    - [x] 실행한다.
+        - [x] 각 Car 마다 이동을 시도한다.
+        - [x] 랜덤한 수 중에 4이상일때만 움직인다.
+- main
+  - 
 
 - ConsoleView
     - 경주할 자동차의 이름을 입력받는다.
