@@ -8,7 +8,5 @@ public class Application {
 
         String[] carsName = consoleView.requestCarsName();
         int tryCount = consoleView.requestTryCount();
-
-
     }
 }

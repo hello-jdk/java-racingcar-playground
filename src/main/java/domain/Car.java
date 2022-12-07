@@ -1,7 +1,7 @@
 package domain;
 
 import DB.CarDTO;
-import utils.Validator;
+import domain.utils.Validator;
 
 public class Car {
     private CarDTO car;
