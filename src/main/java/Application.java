@@ -11,21 +11,16 @@ import view.OutputView;
 public class Application {
     public static void main(String[] args) {
         ConsoleView consoleView = new ConsoleView(new InputView(), new OutputView());
+        RacingGame racingGame = makeRacingGame(consoleView);
+        racingGameStart(consoleView, racingGame);
+        consoleView.printResult(racingGame.calculateWinner());
+    }
 
-        // 레이싱 게임 전처리
+
+    private static RacingGame makeRacingGame(ConsoleView consoleView) {
         String[] carsName = consoleView.requestCarsName();
         List<Car> carList = makeStringArrToCarList(carsName);
-        int tryCount = consoleView.requestTryCount();
-
-        RacingGame racingGame = new RacingGame(carList, new RandomNumberGeneratorByRandomClass());
-        for (int tryCountIndex = 0; tryCountIndex < tryCount; tryCountIndex++) {
-            racingGame.tryMove();
-            consoleView.printTryResult(racingGame);
-        }
-
-//        racingGame.
-        // 시도할 횟수만큼 실행 시키기
-
+        return new RacingGame(carList, new RandomNumberGeneratorByRandomClass());
     }
 
     private static List<Car> makeStringArrToCarList(String[] carsName) {
@@ -42,4 +37,14 @@ public class Application {
         CarDTO carDTO = new CarDTO(carName, INITIAL_DISTANCE);
         return new Car(carDTO);
     }
+
+    private static void racingGameStart(ConsoleView consoleView, RacingGame racingGame) {
+        int tryCount = consoleView.requestTryCount();
+        for (int tryCountIndex = 0; tryCountIndex < tryCount; tryCountIndex++) {
+            racingGame.tryMove();
+            consoleView.printTryResult(racingGame);
+        }
+    }
+
+
 }

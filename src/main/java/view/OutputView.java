@@ -14,4 +14,8 @@ public class OutputView {
     public void printRacingGameResult(RacingGame racingGame) {
         System.out.println(racingGame.toString());
     }
+
+    public void printWinner(String winners) {
+        System.out.println(winners + "가 최종 우승했습니다.");
+    }
 }

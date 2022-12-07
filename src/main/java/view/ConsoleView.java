@@ -24,4 +24,8 @@ public class ConsoleView {
     public void printTryResult(RacingGame racingGame) {
         outputView.printRacingGameResult(racingGame);
     }
+
+    public void printResult(String winners) {
+        outputView.printWinner(winners);
+    }
 }
