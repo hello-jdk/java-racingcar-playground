@@ -82,8 +82,10 @@ pobi, honux가 최종 우승했습니다.
     - [x] 실행한다.
         - [x] 각 Car 마다 이동을 시도한다.
         - [x] 랜덤한 수 중에 4이상일때만 움직인다.
-- main
-  - 
+- Application
+    - makeRacingGame
+    - racingGameStart
+    - racingGameResult
 
 - ConsoleView
     - 경주할 자동차의 이름을 입력받는다.

@@ -16,7 +16,6 @@ public class Application {
         consoleView.printResult(racingGame.calculateWinner());
     }
 
-
     private static RacingGame makeRacingGame(ConsoleView consoleView) {
         String[] carsName = consoleView.requestCarsName();
         List<Car> carList = makeStringArrToCarList(carsName);
