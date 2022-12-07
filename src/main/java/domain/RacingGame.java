@@ -34,6 +34,47 @@ public class RacingGame {
         return false;
     }
 
+    public String calculateWinner() {
+        StringBuilder winner = new StringBuilder();
+        int highScore = 0;
+        for (int car = 0; car < cars.size(); car++) {
+            int score = calculateScore(car);
+            winner = updateWinner(winner, highScore, car, score);
+            highScore = updateHighScore(highScore, score);
+        }
+        return winner.toString();
+    }
+
+    private int calculateScore(int car) {
+        int firstIndex = cars.get(car).toString().indexOf('-');
+        int lastIndex = cars.get(car).toString().lastIndexOf('-');
+        return lastIndex - firstIndex;
+    }
+
+
+    private StringBuilder updateWinner(StringBuilder winner, int highScore, int car, int score) {
+        if (score > highScore) {
+            winner = new StringBuilder(makeCarsName(car));
+        }
+        if (score == highScore) {
+            winner.append(", ").append(makeCarsName(car));
+        }
+        return winner;
+    }
+
+    private String makeCarsName(int car) {
+        int lastIndex = cars.get(car).toString().indexOf(" ");
+        return cars.get(car).toString().substring(0, lastIndex);
+    }
+
+    private int updateHighScore(int highScore, int score) {
+        if (score > highScore) {
+            return score;
+        }
+        return highScore;
+    }
+
+
     @Override
     public String toString() {
         return makeGraphicsByCarList();
@@ -46,4 +87,5 @@ public class RacingGame {
         }
         return result.toString();
     }
+
 }

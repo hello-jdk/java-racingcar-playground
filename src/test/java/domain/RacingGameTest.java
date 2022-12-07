@@ -28,7 +28,34 @@ class RacingGameTest {
 
         //then
         Assertions.assertThat(racingGame.toString()).contains("one : -").contains("two : -");
-
     }
 
+    @Test
+    void 승자확인_한명() {
+        CarDTO carDTOWin = new CarDTO("win", 10);
+        CarDTO carDTOLose = new CarDTO("loser", 2);
+
+        Car winner = new Car(carDTOWin);
+        Car loser = new Car(carDTOLose);
+
+        RacingGame racingGame = new RacingGame(List.of(winner, loser), new RandomNumberGeneratorByRandomClass());
+        Assertions.assertThat(racingGame.calculateWinner()).isEqualTo("win");
+    }
+
+    @Test
+    void 승자확인_여러명() {
+        CarDTO carDTOWin1 = new CarDTO("win1", 10);
+        CarDTO carDTOWin2 = new CarDTO("win2", 10);
+        CarDTO carDTOWin3 = new CarDTO("win3", 10);
+        CarDTO carDTOLose = new CarDTO("loser", 2);
+
+        Car winner1 = new Car(carDTOWin1);
+        Car winner2 = new Car(carDTOWin2);
+        Car winner3 = new Car(carDTOWin3);
+        Car loser = new Car(carDTOLose);
+
+        RacingGame racingGame = new RacingGame(List.of(winner1, winner2, winner3, loser),
+                new RandomNumberGeneratorByRandomClass());
+        Assertions.assertThat(racingGame.calculateWinner()).isEqualTo("win1, win2, win3");
+    }
 }

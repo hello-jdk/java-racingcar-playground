@@ -13,7 +13,7 @@ public class Car {
 
     public void move() {
         final int OFFSET = 1;
-        int nextDistance = car.getDistanse() + OFFSET;
+        int nextDistance = car.getDistance() + OFFSET;
         this.car = new CarDTO(car.getCarName(), nextDistance);
     }
 
@@ -25,7 +25,7 @@ public class Car {
 
     private String makeGraphicsByDistance() {
         StringBuilder result = new StringBuilder();
-        for (int distance = 0; distance < car.getDistanse(); distance++) {
+        for (int distance = 0; distance < car.getDistance(); distance++) {
             result.append("-");
         }
         return result.toString();
